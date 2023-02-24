@@ -27,7 +27,6 @@ public class DialogueTriggerEvent : MonoBehaviour
 
     public void Appear()
     {
-        Debug.Log("You are Interacting with an NPC");
         m_characterDialogueBox.SetActive(true);
         if (m_autoHit || (Input.GetAxis("Submit") > 0))
         {
@@ -38,5 +37,6 @@ public class DialogueTriggerEvent : MonoBehaviour
     public void Close()
     {
         m_characterDialogueBox.SetActive(false);
+        DialogueBoxController.m_activated = false;
     }
 }

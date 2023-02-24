@@ -19,5 +19,22 @@ public class Dialogue : MonoBehaviour
             "I'll answer that question, but it won't change much about the game!",
             "You can always tweak the 'DialogueBox.cs' script to add more functionality!"
         });
+
+        dialogue.Add("CharacterB", new string[] {
+            "Wow, Are you a Wanderer!",
+            "I'm Pint",
+            "The owner of this here shop",
+            "We have a collection of different Assortments that can aid you in your quests",
+            "Feel free to look around!"
+        });
+
+        dialogue.Add("CharacterC", new string[] {
+            "Oh, thanks for sparing the moment",
+            "A great calamity has befollen our land, could you maybe help us?",
+            "you look cabable enough, i guess!",
+            "I think i have some coins here, for your reward that is!",
+            "Not too fast, you have to complete the quest first",
+            "...Trying to cheat me"
+        });
     }
 }

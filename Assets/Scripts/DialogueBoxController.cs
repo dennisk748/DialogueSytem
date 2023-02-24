@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.NetworkInformation;
 using System.Reflection;
 using TMPro;
@@ -16,21 +17,19 @@ public class DialogueBoxController : MonoBehaviour
     [SerializeField] TextMeshProUGUI textMesh;
 
     public static bool m_activated;
-    private int m_cPos = 0;
     private string[] characterDialogue;
     private DialogueTriggerEvent dialogueTrigger;
     private string fileName;
-    private int m_index = -1;
-    private bool m_typing = true;
+    private int m_index = 0;
 
 
     void Update()
     {
         if (m_activated)
         {
-            if ((Input.GetAxis("Submit") > 0) || (Input.GetAxis("Jump") > 0))
+            if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.KeypadEnter) && m_index < characterDialogue.Length)
             {
-
+                m_index++;
             }
         }
         
@@ -44,6 +43,8 @@ public class DialogueBoxController : MonoBehaviour
         nameMesh.text = characterName;
         characterDialogue = dialogue.dialogue[fileName];
 
+        Debug.Log("1." + characterDialogue[0]);
+
         m_activated = true;
 
         StartCoroutine(Advance());
@@ -51,30 +52,8 @@ public class DialogueBoxController : MonoBehaviour
 
     IEnumerator Advance()
     {
-        m_index++;
-        m_typing = true;
+        textMesh.text = characterDialogue[m_index];
 
-        textMesh.text = "";
-        StartCoroutine("TypeText");
-
-        //Wait before typing
         yield return new WaitForSeconds(.4f);
-    }
-
-    IEnumerator TypeText()
-    {
-        WaitForSeconds wait = new WaitForSeconds(.01f);
-        foreach (char c in characterDialogue[m_index])
-        {
-            m_cPos++;
-            if (m_cPos != 0 && m_cPos == characterDialogue[m_index].Length)
-            {
-                m_typing = false;
-                m_cPos = 0;
-            }
-
-            textMesh.text += c;
-            yield return wait;
-        }
     }
 }

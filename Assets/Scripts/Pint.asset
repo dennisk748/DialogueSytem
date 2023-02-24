@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 814c70c4e886a6947a09849af41abf95, type: 3}
   m_Name: Pint
   m_EditorClassIdentifier: 
-  characterPrefab: {fileID: 0}
+  characterPrefab: {fileID: 2343356068399924717, guid: d94a51a2b52e01e4889a286b933f2b44, type: 3}

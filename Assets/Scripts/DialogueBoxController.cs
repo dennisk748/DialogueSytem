@@ -43,8 +43,6 @@ public class DialogueBoxController : MonoBehaviour
         nameMesh.text = characterName;
         characterDialogue = dialogue.dialogue[fileName];
 
-        Debug.Log("1." + characterDialogue[0]);
-
         m_activated = true;
 
         StartCoroutine(Advance());
